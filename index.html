@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> clock </title>
+    <style>
+        body{
+          background: linear-gradient(to right, rgb(156, 249, 249),rgb(51, 177, 177),rgb(1, 65, 65)
+          );
+          height: 96vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        h1{
+             /* display: flex;
+             align-self: flex-; */
+            font-size: 40px;
+            color: rgb(5, 110, 110);
+            /* border: 2px solid; */
+            text-shadow: 0px 0px 12px rgb(197, 251, 251) ;
+            font-weight: bold;           
+        }
+        .clock{
+            width: 400px;
+            height: 150px;
+            border: 2px solid rgb(18, 192, 192);
+            background-color:  rgb(5, 110, 110);
+            border-radius: 12px;
+            box-shadow: 8px 8px 10px rgb(108, 232, 232);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        p{
+            text-align: center;
+            line-height: 100px;
+            font-size: 40px;
+            color: rgb(149, 248, 215);
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <div class="clock">
+        <p class="time" id="time"><span id="minut"></span></p>
+    </div>
+    <script>
+        //  function time(){
+        //     let tame=document.getElementById('time');
+        //           tame= Date();
+        //           console.log(tame);
+        //           document.getElementById('time').innerHTML=tame;
+
+        //  }
+        //  time();
+        //  setInterval(time, 1000)
+
+        function updateTime() {
+            let currentTime = new Date();
+            let hours = currentTime.getHours();
+            let minutes = currentTime.getMinutes();
+          
+            
+            let seconds= currentTime.getSeconds();
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            // ampm.style.color='red';
+
+            // Convert hours to 12-hour format
+            hours = hours % 12 || 12;
+
+            // Add leading zeros to minutes if needed
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+
+            // Display the time in the desired format-
+            let formattedTime = hours + ':' + minutes + ': '+seconds+ ' - ' + ' -  '+ ampm;
+            document.getElementById('time').innerHTML = formattedTime;
+         }
+
+         updateTime();
+         setInterval(updateTime, 1000);
+    </script>
+    
+</body>
+</html>
